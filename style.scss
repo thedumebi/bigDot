@@ -15,7 +15,9 @@ html {
     --brown-color: #a0886c;
     --orange-color: #f0b863;
     --purple-color: #8364ac;
-    --text-color: #8364ac;    
+    --dmb-color: #4f5c4f;
+    --gold-color: #bd9d49;
+    --text-color: #8364ac;
     --clock-border: rgba(231, 231, 231, 0.2);
     --clock-frame-box-shadow: rgba(231, 231, 231, 0.1);
     --clock-box-shadow: rgba(204, 204, 204, 0.8);
@@ -69,12 +71,15 @@ body {
     height: auto;
     transition: linear 0.3s;
     background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
     .nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        max-width: 1028px;
+        width: 100%;
         padding: 20px 30px;
 
         &-logo {
@@ -208,11 +213,10 @@ body {
 
         .pick-color {
             background-color: var(--bg-fill);
-            width: 400px;
+            width: 550px;
             height: auto;
             padding: 20px;
             display: flex;
-            justify-content: center;
             align-items: center;
             border-radius: 20px;
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
@@ -278,6 +282,18 @@ body {
                 &:nth-child(6) {
                     background-color: var(--purple-color);
                     border: 3px solid var(--purple-color);
+                    margin-left: 10px;
+                }
+
+                &:nth-child(7) {
+                    background-color: var(--dmb-color);
+                    border: 3px solid var(--dmb-color);
+                    margin-left: 10px;
+                }
+
+                &:nth-child(8) {
+                    background-color: var(--gold-color);
+                    border: 3px solid var(--gold-color);
                     margin-left: 10px;
                 }
             }

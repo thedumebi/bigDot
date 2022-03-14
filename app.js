@@ -39,9 +39,7 @@ setInterval(() => {
 
   // show minute
   // if single digit make it double digits
-  minuteContainer.firstElementChild.innerText = min;
-
-  //   minute.innerText = `${minute.innerText < 10 ? "0" : ""}${minute.innerText}`;
+  minuteContainer.firstElementChild.innerText = `${min < 10 ? "0" : ""}${min}`;
 }, 1000);
 
 // choose color button
@@ -72,6 +70,10 @@ for (const color of colors) {
       document.documentElement.style.setProperty("--text-color", "#929292");
     if (color.id === "purple")
       document.documentElement.style.setProperty("--text-color", "#8364ac");
+    if (color.id === "dmb")
+      document.documentElement.style.setProperty("--text-color", "#4f5c4f");
+    if (color.id === "gold")
+      document.documentElement.style.setProperty("--text-color", "#bd9d49");
 
     dim.style.display = "none";
     pickColor.style.display = "none";
