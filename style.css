@@ -22,6 +22,18 @@ html {
   --clock-border: rgba(231, 231, 231, 0.2);
   --clock-frame-box-shadow: rgba(231, 231, 231, 0.1);
   --clock-box-shadow: rgba(204, 204, 204, 0.8);
+  --analog-text: #202520;
+  --analog-clock-border: #ecf0f3;
+  --analog-clock-bg: #fff6e7;
+  --analog-clock-shadow-up: #cbced1;
+  --analog-clock-shadow-down: white;
+  --analog-clock-center-circle: var(--analog-clock-shadow-up);
+  --analog-clock-hour: #c58371;
+  --analog-clock-minute: #c58371;
+  --analog-clock-second: #ff3677;
+  --analog-clock-marking: #a5a7b1;
+  --analog-clock-marking-sec: #bdbdcb;
+  --analog-clock-marking-seconds: rgba(189, 189, 203, 0.07);
 }
 
 html[data-theme='dark'] {
@@ -32,6 +44,18 @@ html[data-theme='dark'] {
   --clock-border: transparent;
   --clock-frame-box-shadow: transparent;
   --clock-box-shadow: var(--text-color);
+  --analog-text: #d9dbe9;
+  --analog-clock-border: #282828;
+  --analog-clock-bg: #000;
+  --analog-clock-shadow-up: rgba(67, 67, 67, 0.5);
+  --analog-clock-shadow-down: rgba(0, 0, 0, 0.5);
+  --analog-clock-center-circle: #4d4b63;
+  --analog-clock-hour: #61afff;
+  --analog-clock-minute: #61afff;
+  --analog-clock-second: #ee791a;
+  --analog-clock-marking: #1df52f;
+  --analog-clock-marking-sec: #bdbdcb;
+  --analog-clock-marking-seconds: rgba(189, 189, 203, 0.07);
 }
 
 @media only screen and (max-width: 500px) {
@@ -78,7 +102,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .overall-container .nav {
@@ -125,7 +154,7 @@ body {
   width: 350px;
   height: 350px;
   background-color: var(--bg);
-  margin: 15px auto 50px;
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,6 +247,105 @@ body {
   border-radius: 50%;
   -webkit-transition: linear .3s;
   transition: linear .3s;
+  position: relative;
+}
+
+.overall-container .clock-frame .clock .overall-minute-container .minute-container .second-container .second-indicator .milliseconds-container {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+.overall-container .clock-frame .clock .overall-minute-container .minute-container .second-container .second-indicator .milliseconds-container .milliseconds-indicator {
+  width: 8px;
+  height: 8px;
+  margin: -5px auto;
+  background-color: var(--text-color);
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  -webkit-transition: linear .3s;
+  transition: linear .3s;
+}
+
+.overall-container .digital-clock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 5rem;
+  background-color: var(--bg);
+  width: 30%;
+  max-width: 400px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  border-radius: 20px;
+  border: 10px solid var(--clock-border);
+  -webkit-transition: linear 0.3s;
+  transition: linear 0.3s;
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 20px 20px var(--clock-frame-box-shadow);
+          box-shadow: 0 0 20px 20px var(--clock-frame-box-shadow);
+}
+
+.overall-container .digital-clock .digital-hour,
+.overall-container .digital-clock .digital-minutes,
+.overall-container .digital-clock .digital-seconds,
+.overall-container .digital-clock .digital-mseconds {
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--clock-bg);
+  -webkit-box-shadow: 0 0 30px var(--clock-box-shadow);
+          box-shadow: 0 0 30px var(--clock-box-shadow);
+  border-radius: 10px;
+  -webkit-transition: linear 0.3s;
+  transition: linear 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: var(--text-color);
+}
+
+.overall-container .digital-clock .digital-hour > div:first-of-type,
+.overall-container .digital-clock .digital-minutes > div:first-of-type,
+.overall-container .digital-clock .digital-seconds > div:first-of-type,
+.overall-container .digital-clock .digital-mseconds > div:first-of-type {
+  font-size: 12px;
+}
+
+.overall-container .digital-clock .digital-hour__data,
+.overall-container .digital-clock .digital-minutes__data,
+.overall-container .digital-clock .digital-seconds__data,
+.overall-container .digital-clock .digital-mseconds__data {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
 .overall-container .date-container {
@@ -233,6 +361,248 @@ body {
 
 .overall-container .date-container .date {
   color: var(--text-color);
+}
+
+.overall-container .traditional-clock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1.8rem;
+  border: 10px solid var(--analog-clock-border);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-box-shadow: -4px -4px 10px var(--analog-clock-shadow-up), inset 4px 4px 10px var(--analog-clock-shadow-down), inset -4px -4px 10px var(--analog-clock-shadow-up), 4px 4px 10px var(--analog-clock-shadow-down);
+          box-shadow: -4px -4px 10px var(--analog-clock-shadow-up), inset 4px 4px 10px var(--analog-clock-shadow-down), inset -4px -4px 10px var(--analog-clock-shadow-up), 4px 4px 10px var(--analog-clock-shadow-down);
+}
+
+.overall-container .traditional-clock .outer-clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: var(--bg);
+  overflow: hidden;
+}
+
+.overall-container .traditional-clock .outer-clock-face::after {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.overall-container .traditional-clock .outer-clock-face::before, .overall-container .traditional-clock .outer-clock-face::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background-color: var(--analog-clock-marking);
+  z-index: 0;
+  left: 49%;
+}
+
+.overall-container .traditional-clock .outer-clock-face .inner-clock-face {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: var(--bg);
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.overall-container .traditional-clock .outer-clock-face .inner-clock-face::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--analog-clock-center-circle);
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+.overall-container .traditional-clock .numbers {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  -webkit-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 5;
+  color: var(--text-color);
+}
+
+.overall-container .traditional-clock .hand {
+  position: absolute;
+  border: 1px solid transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  left: 50%;
+  bottom: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+.overall-container .traditional-clock .hand.hours {
+  width: 8px;
+  height: 30%;
+  background-color: var(--analog-clock-hour);
+  z-index: 3;
+}
+
+.overall-container .traditional-clock .hand.minutes {
+  width: 3.5px;
+  height: 40%;
+  background-color: var(--analog-clock-minute);
+  z-index: 10;
+}
+
+.overall-container .traditional-clock .hand.seconds {
+  width: 4px;
+  height: 45%;
+  background-color: var(--analog-clock-second);
+}
+
+.overall-container .stop-watch-frame {
+  border: 10px solid var(--clock-border);
+  -webkit-box-shadow: 0 0 20px 20px var(--clock-frame-box-shadow);
+          box-shadow: 0 0 20px 20px var(--clock-frame-box-shadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--bg);
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.overall-container .stop-watch-frame .stop-watch {
+  background-color: var(--clock-bg);
+  -webkit-box-shadow: 0 0 30px var(--clock-box-shadow);
+          box-shadow: 0 0 30px var(--clock-box-shadow);
+  width: 40%;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 30px 0;
+  border-radius: 20px;
+}
+
+.overall-container .stop-watch-frame .stop-watch .timer-display {
+  position: relative;
+  width: 110%;
+  background: var(--text-color);
+  left: -5%;
+  padding: 20px 0;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 2rem;
+  font-family: "Roboto mono", monospace;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 20px var(--clock-box-shadow);
+          box-shadow: 0 0 20px var(--clock-box-shadow);
+}
+
+.overall-container .stop-watch-frame .stop-watch .timerButtons {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.overall-container .stop-watch-frame .stop-watch .timerButtons button {
+  padding: 8px 16px;
+  background-color: var(--text-color);
+  color: #fff;
+  border: none;
+  font-size: .8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.overall-container .stop-watch-frame .stop-watch .timerButtons button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.overall-container .stop-watch-frame .stop-watch .lap-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.overall-container .stop-watch-frame .stop-watch .lap-container .time-interval {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: var(--clock-border);
+  padding: 8px 16px;
+}
+
+.overall-container .stop-watch-frame .stop-watch .lap-container .time-interval span {
+  font-size: .85rem;
+  color: var(--text-color);
+}
+
+.overall-container .stop-watch-frame .stop-watch .lap-container .time-interval:not(:last-of-type) {
+  margin-bottom: 1rem;
 }
 
 .overall-container .color-container {
@@ -382,6 +752,58 @@ body {
 .overall-container .fade-in {
   -webkit-animation: fadeIn 1s ease forwards;
           animation: fadeIn 1s ease forwards;
+}
+
+.minute-one,
+.minute-two,
+.minute-three,
+.minute-four,
+.minute-five,
+.minute-six,
+.minute-seven,
+.minute-eight {
+  width: 2px;
+  background-color: var(--clock-marking-seconds);
+  height: 100%;
+  -webkit-transform: rotate(6deg);
+          transform: rotate(6deg);
+  position: absolute;
+  left: 49%;
+}
+
+.minute-two {
+  -webkit-transform: rotate(12deg);
+          transform: rotate(12deg);
+}
+
+.minute-three {
+  -webkit-transform: rotate(18deg);
+          transform: rotate(18deg);
+}
+
+.minute-four {
+  -webkit-transform: rotate(24deg);
+          transform: rotate(24deg);
+}
+
+.minute-five {
+  -webkit-transform: rotate(96deg);
+          transform: rotate(96deg);
+}
+
+.minute-six {
+  -webkit-transform: rotate(102deg);
+          transform: rotate(102deg);
+}
+
+.minute-seven {
+  -webkit-transform: rotate(108deg);
+          transform: rotate(108deg);
+}
+
+.minute-eight {
+  -webkit-transform: rotate(114deg);
+          transform: rotate(114deg);
 }
 
 @-webkit-keyframes fadeIn {

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>bigDot</title>
+    <title>DMB CLocks</title>
   </head>
 
   <body>
     <div id="overall-container" class="overall-container">
       <nav class="nav">
-        <h3 id="logo" class="nav-logo">theBigDot</h3>
+        <h3 id="logo" class="nav-logo">Clocks</h3>
         <span id="theme-btn" class="nav-mode">
           <!-- light icon -->
           <svg
@@ -44,7 +44,7 @@
         </span>
       </nav>
 
-      <!-- clock -->
+      <!-- bigDot clock -->
       <div id="clock-frame" class="clock-frame">
         <div id="clock" class="clock">
           <h2 id="hour" class="clock-hour">4</h2>
@@ -56,10 +56,40 @@
               <p id="minute" class="minute">23</p>
 
               <section id="second-container" class="second-container">
-                <div class="second-indicator" id="second-indicator"></div>
+                <div class="second-indicator" id="second-indicator">
+                  <div
+                    id="milliseconds-container"
+                    class="milliseconds-container"
+                  >
+                    <div
+                      class="milliseconds-indicator"
+                      id="milliseconds-indicator"
+                    ></div>
+                  </div>
+                </div>
               </section>
             </div>
           </section>
+        </div>
+      </div>
+
+      <!-- digital clock -->
+      <div id="digital-clock" class="digital-clock">
+        <div id="digital-hour" class="digital-hour">
+          <div>Hour</div>
+          <div id="digital-hour__data" class="digital-hour__data"></div>
+        </div>
+        <div id="digital-minutes" class="digital-minutes">
+          <div>Min</div>
+          <div id="digital-minutes__data" class="digital-minutes__data"></div>
+        </div>
+        <div id="digital-seconds" class="digital-seconds">
+          <div>Sec</div>
+          <div id="digital-seconds__data" class="digital-seconds__data"></div>
+        </div>
+        <div id="digital-mseconds" class="digital-mseconds">
+          <div>Ms</div>
+          <div id="digital-mseconds__data" class="digital-mseconds__data"></div>
         </div>
       </div>
 
@@ -68,24 +98,86 @@
         <p id="date" class="date">Thursday 23 April 1998</p>
       </div>
 
+      <!-- analog clock -->
+      <div class="traditional-clock">
+        <div class="outer-clock-face">
+          <div class="inner-clock-face">
+            <div class="hours hand" id="hour-hand"></div>
+            <div class="minutes hand" id="minute-hand"></div>
+            <div class="seconds hand" id="seconds-hand"></div>
+          </div>
+        </div>
+
+        <div class="numbers">
+          <div class="1">1</div>
+        </div>
+        <div class="numbers">
+          <div class="2">2</div>
+        </div>
+        <div class="numbers">
+          <div class="3">3</div>
+        </div>
+        <div class="numbers">
+          <div class="4">4</div>
+        </div>
+        <div class="numbers">
+          <div class="5">5</div>
+        </div>
+        <div class="numbers">
+          <div class="6">6</div>
+        </div>
+        <div class="numbers">
+          <div class="7">7</div>
+        </div>
+        <div class="numbers">
+          <div class="8">8</div>
+        </div>
+        <div class="numbers">
+          <div class="9">9</div>
+        </div>
+        <div class="numbers">
+          <div class="10">10</div>
+        </div>
+        <div class="numbers">
+          <div class="11">11</div>
+        </div>
+        <div class="numbers">
+          <div class="12">12</div>
+        </div>
+      </div>
+
+      <!-- stop watch -->
+      <div class="stop-watch-frame">
+        <div class="stop-watch" id="stop-watch">
+          <div id="timer-display" class="timer-display">00:00:00:000</div>
+          <div class="timerButtons" id="timerButtons">
+            <button id="startTimer" class="startTimer">Start</button>
+            <button id="lapTimer" class="lapTimer" disabled>Lap</button>
+            <button id="resetTimer" class="resetTimer" disabled>Reset</button>
+          </div>
+
+          <div id="lap-container" class="lap-container"></div>
+        </div>
+      </div>
+
       <!-- Colors panel -->
       <section class="color-container">
         <button class="choose-color" id="choose-color">Change Color</button>
         <div class="fade-in pick-color" id="pick-color">
-            <section class="colors" id="green"></section>
-            <section class="colors" id="orange"></section>
-            <section class="colors" id="pink"></section>
-            <section class="colors" id="brown"></section>
-            <section class="colors" id="grey"></section>
-            <section class="colors" id="purple"></section>
-            <section class="colors" id="dmb"></section>
-            <section class="colors" id="gold"></section>
+          <section class="colors" id="green"></section>
+          <section class="colors" id="orange"></section>
+          <section class="colors" id="pink"></section>
+          <section class="colors" id="brown"></section>
+          <section class="colors" id="grey"></section>
+          <section class="colors" id="purple"></section>
+          <section class="colors" id="dmb"></section>
+          <section class="colors" id="gold"></section>
         </div>
       </section>
 
       <section class="dim" id="dim"></section>
     </div>
 
-    <script src="app.js"></script>
+    <script src="dist/app.js"></script>
   </body>
 </html>
