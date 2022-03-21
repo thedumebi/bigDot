@@ -63,6 +63,7 @@ class Clock {
         this.secondsDeg = 0;
         this.minuteDeg = 0;
         this.hoursDeg = 0;
+        this.tickSound = "tick";
         this.setTime();
     }
     get clockId() {
@@ -112,6 +113,15 @@ class Clock {
     }
     setTime() {
         const interval = setInterval(this.getTime, 10);
+        setInterval(() => {
+            playSounds(this.tickSound);
+            if (this.tickSound === "tick") {
+                this.tickSound = "tock";
+            }
+            else {
+                this.tickSound = "tick";
+            }
+        }, 1000);
     }
 }
 __decorate([
@@ -289,5 +299,15 @@ const recordLap = () => {
     timeInterval.appendChild(timeInstance);
     timeInterval.appendChild(interval);
     lapContainer.insertBefore(timeInterval, lapContainer.firstElementChild);
+};
+const playSounds = (key) => {
+    const audio = new Audio(`sounds/${key}.mp3`);
+    const resp = audio.play();
+    if (resp !== undefined) {
+        resp
+            .then((_) => { })
+            .catch((_) => {
+        });
+    }
 };
 //# sourceMappingURL=app.js.map

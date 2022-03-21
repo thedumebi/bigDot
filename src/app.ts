@@ -93,6 +93,7 @@ class Clock {
   private secondsDeg: number = 0;
   private minuteDeg: number = 0;
   private hoursDeg: number = 0;
+  public tickSound: string = "tick";
 
   constructor(
     private readonly id: number,
@@ -179,6 +180,15 @@ class Clock {
 
   setTime() {
     const interval = setInterval(this.getTime, 10);
+
+    setInterval(() => {
+      playSounds(this.tickSound);
+      if (this.tickSound === "tick") {
+        this.tickSound = "tock";
+      } else {
+        this.tickSound = "tick";
+      }
+    }, 1000);
   }
 }
 
@@ -395,4 +405,17 @@ const recordLap = () => {
   timeInterval.appendChild(interval);
 
   lapContainer.insertBefore(timeInterval, lapContainer.firstElementChild);
+};
+
+// play clock sounds
+const playSounds = (key: string) => {
+  const audio = new Audio(`sounds/${key}.mp3`);
+  const resp = audio.play();
+  if (resp !== undefined) {
+    resp
+      .then((_) => {})
+      .catch((_) => {
+        // console.log({ playErr: err });
+      });
+  }
 };
